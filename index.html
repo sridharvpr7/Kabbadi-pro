@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kabbadi pro🏆</title>
+    <link rel="stylesheet" href="sports.css">
+    <script defer src="sports.js"></script>
+    <link rel="icon" href="kabbadi pro logo.jpg">
+</head>
+
+<body>
+
+    <div class="body">
+        <div class="navcont">
+            <h2>KABBADI PRO🏆</h2>
+            <input type="file" id="importFile" hidden onchange="showFileName(event)" style="color: white;">
+            <label for="importFile" class="upload-btn">Choose File</label>
+
+            <span id="fileName">No File Selected</span>
+            <div class="navbut">
+
+                <button onclick="showhome()" class="navbuten">🏠 Dashboard</button>
+
+                <button onclick="showteam()" class="navbuten">👥 Teams</button>
+                <button onclick="showplayers()" class="navbuten">🧍 Players</button>
+
+                <button onclick="showpoint()" class="navbuten">📊 Point tables</button>
+
+                <button onclick="showfixtures()" class="navbuten">🗓️ Fixtures</button>
+
+                <button onclick="showanalysis()" class="navbuten">📈 Analysis</button>
+
+                <button onclick="exportTournament()" class="navbuten">
+                    📥 Export Tournament
+                </button>
+
+                <button id="themeBtn" onclick="toggleTheme()" class="navbuten">
+                    🌙 Dark Mode
+                </button>
+                <button onclick="resetMatch()" class="resetbtn">🔄️ Reset</button>
+            </div>
+        </div>
+
+        <div class="body1">
+            <div class="dashbody">
+                <div class="dashcard" style="border-top: 10px goldenrod solid;">
+                    <p>0</p>
+                    <h2>Total teams</h2>
+                </div>
+                <div class="dashcard" style="border-top: 10px goldenrod solid;">
+                    <p>0</p>
+                    <h2>Total players</h2>
+                </div>
+                <div class="dashcard" style="border-top: 10px goldenrod solid;">
+                    <p>0</p>
+                    <h2>Total matches</h2>
+                </div>
+                <div class="dashcard" style="border-top: 10px goldenrod solid;">
+                    <p class="winner" style="font-size: 30px;">team</p>
+                    <h2>Winner🏅</h2>
+                </div>
+            </div>
+
+            <div class="dashboard-grid">
+
+                <div class="top-player-dashboard">
+                    <div class="dashcard playercard">
+                        <h2>🔥 Top Raider</h2>
+                        <p id="topRaiderName">-</p>
+                    </div>
+
+                    <div class="dashcard playercard">
+                        <h2>🛡️ Top Defender</h2>
+                        <p id="topDefenderName">-</p>
+                    </div>
+
+                    <div class="dashcard playercard">
+                        <h2>⭐ Top All Rounder</h2>
+                        <p id="topAllRounderName">-</p>
+                    </div>
+                </div>
+
+                <div class="allbox">
+                    <div class="box1"></div>
+                    <div class="box2"></div>
+                </div>
+
+            </div>
+
+            <div class="box3"></div>
+
+            <div class="match-status-dashboard">
+
+                <div id="allmatch"></div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <!--teams-->
+
+
+    <div class="body2" id="team">
+
+        <div class="teamform">
+            <input type="text" id="teamname" placeholder="Enter Team Name">
+            <button onclick="addTeam()">Add Team</button>
+        </div>
+
+
+        <h1>Teams</h1>
+
+        <div id="teamlist"></div>
+
+        <div class="teammanagement" id="teammanagement">
+
+            <button class="closebtn" onclick="closeteammanagement()">✖</button>
+
+            <h2 id="selectedTeamName">Team Name</h2>
+
+            <div class="form">
+
+                <h3 class="section-title">👤 Personal Details</h3>
+
+                <label>Name</label>
+                <input type="text" id="playername" placeholder="Enter Player Name">
+
+                <label>Jersey Number</label>
+                <input type="text" id="jnum" placeholder="Enter Jersey Number">
+
+                <label>Age</label>
+                <input type="number" id="age" placeholder="Enter Age">
+
+                <label>Date of Birth</label>
+                <input type="date" id="dob">
+
+                <label>Contact</label>
+                <input type="number" id="contact" placeholder="Enter Mobile Number">
+
+
+                <h3 class="section-title">💪 Physical Details</h3>
+
+                <label>Height (cm)</label>
+                <input type="number" id="height" placeholder="Enter Height">
+
+                <label>Weight (kg)</label>
+                <input type="number" id="weight" placeholder="Enter Weight">
+
+
+                <h3 class="section-title">🏆 Match Details</h3>
+
+                <label>Position</label>
+                <select id="position">
+                    <option value="">Select Position</option>
+                    <option value="raider">Raider</option>
+                    <option value="defender">Defender</option>
+                    <option value="allrounder">All Rounder</option>
+                </select>
+
+                <label>Place</label>
+                <select id="place">
+                    <option value="">Select Place</option>
+                    <option>Raider Left</option>
+                    <option>Raider Right</option>
+                    <option>Corner Left</option>
+                    <option>Corner Right</option>
+                    <option>Cover Left</option>
+                    <option>Cover Right</option>
+                    <option>Inner Position</option>
+                </select>
+
+                <div class="rolebox">
+                    <label>
+                        <input type="checkbox" id="captain">
+                        Captain
+                    </label>
+
+                    <label>
+                        <input type="checkbox" id="vicecaptain">
+                        Vice Captain
+                    </label>
+                </div>
+
+                <button class="submitbtn" onclick="submitform()">
+                    Save Player
+                </button>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!--players-->
+
+
+    <div class="body2" id="players">
+
+        <h1>Players List</h1>
+        <div id="playerTable"></div>
+
+    </div>
+
+
+    <!--point table-->
+
+
+    <div class="body2" id="point">
+        <h1>Points Table</h1>
+
+        <table border="1" width="100%" id="pointsTable" style="width: 98%; margin-left: 1%;">
+            <thead>
+                <tr>
+                    <th>Rank</th>
+                    <th>Team</th>
+                    <th>Played</th>
+                    <th>Won</th>
+                    <th>Lost</th>
+                    <th>Draw</th>
+                    <th>Points</th>
+                </tr>
+            </thead>
+
+            <tbody id="pointsBody"></tbody>
+        </table>
+    </div>
+
+
+    <!--fixtures-->
+
+    <div class="body2" id="fixtures">
+        <h1>Fixtures</h1>
+
+        <div style="padding:20px;">
+            <select id="fixtureType" class="fixturesbtn">
+                <option value="">Select Format</option>
+                <option value="roundrobin">Round Robin</option>
+                <option value="knockout">Knockout</option>
+            </select>
+            <button onclick="generateFixtures()" class="fixturesbtn">
+                Generate Fixtures
+            </button>
+        </div>
+
+        <div id="fixtureList"></div>
+
+    </div>
+
+
+
+    <div class="body2" id="analysis">
+        <h1>Analysis</h1>
+        <div id="analysisContainer"></div>
+    </div>
+</body>
+
+</html>
