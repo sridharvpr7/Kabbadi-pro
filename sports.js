@@ -3,7 +3,7 @@
 //  MySQL Backend Version
 // =============================================
 
-const API = "kabbadi-pro-production.up.railway.app"; // 🔁 Change this to your server URL
+const API = "https://kabbadi-pro-production.up.railway.app"; // 🔁 Change this to your server URL
 
 let editMode = false;
 let editTeamIndex = null;
